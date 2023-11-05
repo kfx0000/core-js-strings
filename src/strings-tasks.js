@@ -267,8 +267,8 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
 
 /**
@@ -301,8 +301,12 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let cnt = 0;
+  str.split('').forEach((x) => {
+    if ('aeiouyAEIOUY'.includes(x)) cnt += 1;
+  });
+  return cnt;
 }
 
 /**
@@ -318,8 +322,24 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  return (
+    str
+      .toLowerCase()
+      .replaceAll(' ', '')
+      .replaceAll(',', '')
+      .replaceAll('?', '')
+      .replaceAll('!', '') ===
+    str
+      .toLowerCase()
+      .split('')
+      .reverse()
+      .join('')
+      .replaceAll(' ', '')
+      .replaceAll(',', '')
+      .replaceAll('?', '')
+      .replaceAll('!', '')
+  );
 }
 
 /**
@@ -363,8 +383,14 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVASCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let ret = '';
+  for (let i = 0; i < str.length; i += 1)
+    ret +=
+      str[i].toLowerCase() === str[i]
+        ? str[i].toUpperCase()
+        : str[i].toLowerCase();
+  return ret;
 }
 
 /**
